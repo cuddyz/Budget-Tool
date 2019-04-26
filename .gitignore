@@ -84,3 +84,6 @@ dist
 sw.*
 
 .DS*
+
+# Hardcoding financial information until I set up DB
+local*

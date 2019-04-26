@@ -6,6 +6,10 @@
     display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .wrap {
   flex-wrap: wrap;
 }
@@ -17,6 +21,10 @@
 .flex-center {
     justify-content: center;
     align-items: center;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .float-right {

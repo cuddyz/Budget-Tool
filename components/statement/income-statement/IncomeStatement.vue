@@ -1,9 +1,9 @@
 <template>
-  <section class="m-1">
-    <h3>Income Statement Section</h3>
-    <div class="flex m-1">
-      <income-list class="flex-1 "/>
-      <total-income class="flex-1" />
+  <section>
+    <h2>Income Statement</h2>
+    <div class="flex">
+      <income-list :income="income" class="flex-3 mr-1"/>
+      <total-income :income="income" class="flex-1 ml-1" />
     </div>
     <div class="flex m-1">
       <expenses-list class="flex-1" />
@@ -22,12 +22,25 @@ import CashFlow from './CashFlow'
 
 export default {
   name: 'IncomeStatment',
+  props: ['data'],
   components: {
     IncomeList,
     TotalIncome,
     ExpensesList,
     TotalExpenses,
     CashFlow
+  },
+  computed: {
+    income() {
+      const filteredIncome = this.data.map(entry => entry.income)
+      // Each entry is an array of income(s)
+      return [].concat.apply([], filteredIncome)
+    },
+    expenses() {
+      const filteredExpenses = this.data.map(entry => entry.expenses)
+      // Each entry is an array of expense(s)
+      return [].concat.apply([], filteredExpenses)
+    }
   }
 }
 </script>
