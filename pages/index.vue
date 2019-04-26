@@ -1,9 +1,13 @@
 <template>
-  <h1>Hello World!</h1>
+  <statement />
 </template>
 
 <script>
+import Statement from '@/components/statement/Statement'
 export default {
-  name: 'LandingPage'
+  name: 'LandingPage',
+  components: {
+    Statement
+  }
 }
 </script>
