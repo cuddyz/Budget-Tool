@@ -1,0 +1,36 @@
+// colors
+$colors: (
+    white: #FAFAFA,
+    black: #212121,
+    greyLight: #A6A7A8,
+    grey: #757677,
+    greyDark: #4C4D4E,
+    redLight: #E74C3C,
+    red: #CE3323,
+    redDark: #B51A0A,
+    greenLight: #2ECC71,
+    green: #15B358,
+    greenDark: #009A3F,
+    blueLight: #34D1FF,
+    blue: #1AB7F0,
+    blueDark: #019ED7,
+    orangeLight: #FFBB82,
+    orange: #FFA168,
+    orangeDark: #E6884F
+);
+@function color($color) {
+    @if map-has-key($colors, $color) {
+        @return map-get($colors, $color);
+    }
+}
+@each $value, $color in $colors { // color classes for inline use
+  .color-#{$value} {
+    color: $color;
+  }
+  .bg-color-#{$value} {
+    background-color: $color;
+  }
+  .border-color-#{$value} {
+    border-color: $color;
+  }
+}

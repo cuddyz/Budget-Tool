@@ -1,0 +1,72 @@
+#__layout > main {
+  display: grid;
+  min-height: 100vh;
+  max-width: 100vw;
+}
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1rem;
+    background-color: color(white);
+    color: color(black);
+    max-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+label {
+  display: block;
+  font-weight: 600;
+  color: color(grey);
+}
+input,
+textarea,
+button {
+    border: thin solid color(greyLight);
+    background-color: color(white);
+    border-radius: 0.25rem;
+    transition: color 150ms,
+                border-color 150ms,
+                background-color 150ms;
+    &:focus {
+        border-color: color(grey);
+    }
+}
+input,
+textarea {
+  padding: 0.4rem 0.5rem;
+  width: 100%;
+}
+textarea {
+  resize: vertical;
+}
+button {
+  display: inline-block;
+  position: relative;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  color: color(greyDark);
+    &:hover {
+        cursor: pointer;
+    }
+    &:active {
+        &:not(:disabled) {
+            color: color(greyDark);
+            border-color: color(grey);
+            background-color: color(greyLight);
+        }
+    }
+    &::selection {
+        background-color: transparent;
+    }
+    &[disabled] {
+        color: color(grey) !important;
+        border-color: color(greyLight) !important;
+        &:hover {
+            cursor: default;
+        }
+    }
+}

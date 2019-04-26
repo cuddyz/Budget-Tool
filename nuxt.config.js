@@ -18,21 +18,8 @@ module.exports = {
     ]
   },
 
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-
-  /*
-  ** Global CSS
-  */
   css: [
-  ],
-
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
+    { src: '@/assets/styles/app.scss', lang: 'scss' }
   ],
 
   /*
