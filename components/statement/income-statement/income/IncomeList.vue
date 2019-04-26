@@ -19,9 +19,6 @@ export default {
   props: ['income'],
   components: {
     IncomeListItem
-  },
-  created() {
-    console.log(this.income)
   }
 }
 </script>
