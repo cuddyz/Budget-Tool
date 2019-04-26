@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import List from './table/List'
-import Total from './table/Total'
+import List from '@/components/statement/table/List'
+import Total from '@/components/statement/table/Total'
 
 export default {
   name: 'IncomeStatment',

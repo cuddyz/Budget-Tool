@@ -34,8 +34,6 @@ export default {
 
 <style lang="scss" scoped>
   article {
-    grid-template-rows: 5rem 1fr 1fr;
-
     > * {
       margin: 1rem 5rem;
     }

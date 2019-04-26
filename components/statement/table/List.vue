@@ -4,7 +4,7 @@
     <div class="m-75">
       <header class="flex bold mb-1">
         <p class="flex-3">Description</p>
-        <p class="flex-1">Cash Flow</p>
+        <p class="flex-1">Amount ($)</p>
       </header>
       <list-item v-for="(item, index) in data" :item="item" :key="index" />
     </div>
