@@ -1,24 +1,24 @@
 <template>
-  <section class="m-1">
-    <h3>Income</h3>
+  <section>
+    <h3 class="mt-1">{{ name }}</h3>
     <div class="m-75">
       <header class="flex bold mb-1">
         <p class="flex-3">Description</p>
         <p class="flex-1">Cash Flow</p>
       </header>
-      <income-list-item v-for="(item, index) in income" :item="item" :key="index" />
+      <list-item v-for="(item, index) in data" :item="item" :key="index" />
     </div>
   </section>
 </template>
 
 <script>
-import IncomeListItem from './IncomeListItem'
+import ListItem from './ListItem'
 
 export default {
   name: 'IncomeList',
-  props: ['income'],
+  props: ['name', 'data'],
   components: {
-    IncomeListItem
+    ListItem
   }
 }
 </script>

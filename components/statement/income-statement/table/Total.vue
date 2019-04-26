@@ -1,17 +1,17 @@
 <template>
   <section class="flex align-center">
-    <h3>Total Income: ${{ totalIncome }}</h3>
+    <h3>Total {{ name }}: ${{ total }}</h3>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'TotalIncome',
-  props: ['income'],
+  name: 'Total',
+  props: ['name', 'data'],
   computed: {
-    totalIncome() {
+    total() {
       let total = 0
-      this.income.forEach(i => {
+      this.data.forEach(i => {
         total += i.amount
       })
       return Number(total).toLocaleString('en')

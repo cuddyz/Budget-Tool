@@ -2,32 +2,31 @@
   <section>
     <h2>Income Statement</h2>
     <div class="flex">
-      <income-list :income="income" class="flex-3 mr-1"/>
-      <total-income :income="income" class="flex-1 ml-1" />
+      <list name="Income" :data="income" class="flex-3 mr-1"/>
+      <total name="Income" :data="income" class="flex-1 ml-1" />
     </div>
-    <div class="flex m-1">
-      <expenses-list class="flex-1" />
-      <total-expenses class="flex-1" />
+    <div class="flex">
+      <list name="Expenses" :data="expenses" class="flex-3 mr-1" />
+      <total name="Expenses" :data="expenses" class="flex-1 ml-1" />
     </div>
-    <cash-flow />
+    <div class="flex">
+      <div class="flex-3 mr-1" />
+      <cash-flow class="flex-1 ml-1" />
+    </div>
   </section>
 </template>
 
 <script>
-import IncomeList from './income/IncomeList'
-import TotalIncome from './income/TotalIncome'
-import ExpensesList from './expenses/ExpensesList'
-import TotalExpenses from './expenses/TotalExpenses'
+import List from './table/List'
+import Total from './table/Total'
 import CashFlow from './CashFlow'
 
 export default {
   name: 'IncomeStatment',
   props: ['data'],
   components: {
-    IncomeList,
-    TotalIncome,
-    ExpensesList,
-    TotalExpenses,
+    List,
+    Total,
     CashFlow
   },
   computed: {
