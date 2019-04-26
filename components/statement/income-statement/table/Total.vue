@@ -10,11 +10,7 @@ export default {
   props: ['name', 'data'],
   computed: {
     total() {
-      let total = 0
-      this.data.forEach(i => {
-        total += i.amount
-      })
-      return Number(total).toLocaleString('en')
+      return Number(this.data).toLocaleString('en')
     }
   }
 }
