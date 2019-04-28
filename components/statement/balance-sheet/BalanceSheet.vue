@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import List from '@/components/statement/table/List'
+import List from '@/components/table/List'
 
 export default {
   name: 'BalanceSheet',
