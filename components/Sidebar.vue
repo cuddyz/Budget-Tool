@@ -8,9 +8,9 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link class="flex align-center p-1" :to="'/add'">
-          <i class="fas fa-folder-plus"></i>
-          <p>Add</p>
+        <nuxt-link class="flex align-center p-1" :to="'/entries'">
+          <i class="fas fa-comment-dollar"></i>
+          <p>Entries</p>
         </nuxt-link>
       </li>
     </ul>
