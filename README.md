@@ -5,9 +5,9 @@ Create a local file called ~/server/mongoCreds.js
 
 ```json
   module.exports = {
-    username: '',
-    password: '',
-    url: ''
+    username: "",
+    password: "",
+    url: ""
   }
 
 ```
