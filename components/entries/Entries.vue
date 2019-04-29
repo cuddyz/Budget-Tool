@@ -1,5 +1,5 @@
 <template>
-  <article class="cards">
+  <article v-if="!isLoading" class="cards">
     <entry-dropform v-if="dropformEntry" :entry="dropformEntry" v-on:close="closeDropform" v-on:save="save" />
     <div class="flex mb-1">
       <button @click="create()" class="ml-a"><i class="fas fa-plus"/> Create</button>
@@ -11,14 +11,15 @@
 <script>
 import EntryCard from './EntryCard'
 import EntryDropform from './EntryDropform'
-import { data } from '~/localData.js'
+import { entries as entryService } from '@/services/api'
 
 export default {
   name: 'Entries',
   data() {
     return {
-      entries: data,
-      dropformEntry: null
+      entries: {},
+      dropformEntry: null,
+      isLoading: true
     }
   },
   components: {
@@ -43,14 +44,33 @@ export default {
 
       this.initDropform(emptyEntry)
     },
-    save(entry) {
-      // if entry.id PUT/:ID else POST
-      console.log(entry)
+    async save(entry) {
+      const body = {
+        ...entry,
+        username: 'cuddyz'
+      }
+
+      if (entry.id) {
+        await entryService.update(entry.id, body)
+      } else {
+        await entryService.create(body)
+        this.entries.push(body)
+      }
+
+      this.closeDropform()
     },
-    deleteEntry(entry) {
-      // DELETE/:ID
-      console.log(entry)
+    async deleteEntry(entry) {
+      await entryService.delete(entry.id)
+      const index = this.entries.findIndex(e => entry.id === e.id)
+      this.entries.splice(index, 1)
+    },
+    async getData() {
+      this.entries = (await entryService.list()).data
+      this.isLoading = false
     }
+  },
+  created() {
+    this.getData()
   }
 }
 </script>

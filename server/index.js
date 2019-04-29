@@ -36,7 +36,7 @@ async function start() {
 
   const entry = require('./routes/entry')
 
-  app.use('/api/entry', express.Router()
+  app.use('/api/entries', express.Router()
     .get('/', entry.list)
     .get('/:id', idValid, entry.show)
     .post('/', entry.create)
