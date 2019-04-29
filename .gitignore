@@ -87,3 +87,6 @@ sw.*
 
 # Hardcoding financial information until I set up DB
 local*
+
+# Mongo Creds
+server/mongoCreds.js
