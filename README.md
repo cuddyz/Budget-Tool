@@ -3,11 +3,11 @@
 Uses Mongoose and Mlab to store your database.
 Create a local file called ~/server/mongoCreds.js
 
-```json
+```js
   module.exports = {
-    username: "",
-    password: "",
-    url: ""
+    username: '',
+    password: '',
+    url: ''
   }
 
 ```
