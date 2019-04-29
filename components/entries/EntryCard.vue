@@ -8,7 +8,7 @@
     <list v-if="entry.assets.length > 0" :data="entry.assets" name="Assets" />
     <list v-if="entry.liabilities.length > 0" :data="entry.liabilities" name="Liabilities" />
     <footer class="flex">
-      <button class="ml-a delete"><i class="fas fa-trash-alt" /></button>
+      <button @click="$emit('delete', entry)" class="ml-a delete"><i class="fas fa-trash-alt" /></button>
       <button @click="$emit('edit', entry)" class="ml-1 edit"><i class="fas fa-pencil-alt" /></button>
     </footer>
   </section>
