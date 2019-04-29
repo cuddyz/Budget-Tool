@@ -1,5 +1,17 @@
 # budget-tool
 
+Uses Mongoose and Mlab to store your database.
+Create a local file called ~/server/mongoCreds.js
+
+```json
+  module.exports = {
+    username: '',
+    password: '',
+    url: ''
+  }
+
+```
+
 > Rich Dad Inspired CashFlow Tool
 
 ## Build Setup
