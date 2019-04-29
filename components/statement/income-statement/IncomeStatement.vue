@@ -41,14 +41,14 @@ export default {
     totalIncome() {
       let total = 0
       this.income.forEach(i => {
-        total += i.amount
+        total += Number(i.amount)
       })
       return total
     },
     totalExpenses() {
       let total = 0
       this.expenses.forEach(i => {
-        total += i.amount
+        total += Number(i.amount)
       })
       return total
     },
