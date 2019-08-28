@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3 class="mt-1">{{ name }}</h3>
+    <h3 class="mt-1">{{ name }}<span v-if="totalInHeader">: ${{ totalInHeader }}</span></h3>
     <div v-if="data && data.length > 0" class="m-75">
       <header class="flex bold mb-1">
         <p class="flex-3">Description</p>
@@ -19,7 +19,15 @@ import ListItem from './ListItem'
 
 export default {
   name: 'IncomeList',
-  props: ['name', 'data'],
+  props: ['name', 'data', 'total'],
+  computed: {
+    totalInHeader() {
+      if (!this.total) {
+        return false
+      }
+      return Number(this.total).toLocaleString('en')
+    }
+  },
   components: {
     ListItem
   }
