@@ -3,14 +3,20 @@
     <ul class="flex column">
       <li>
         <nuxt-link class="flex align-center p-1" :to="'/'">
-          <i class="fas fa-file-invoice-dollar"></i>
+          <i class="fas fa-file-invoice-dollar" />
           <p>Statement</p>
         </nuxt-link>
       </li>
       <li>
         <nuxt-link class="flex align-center p-1" :to="'/entries'">
-          <i class="fas fa-comment-dollar"></i>
+          <i class="fas fa-comment-dollar" />
           <p>Entries</p>
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link class="flex align-center p-1" :to="'/stock-screens'">
+          <i class="fas fa-chart-line" />
+          <p>Screens</p>
         </nuxt-link>
       </li>
     </ul>
