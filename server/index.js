@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const mongoCreds = require('./mongoCreds')
 
 require('./models/entry')
+require('./models/screen')
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
@@ -35,6 +36,7 @@ async function start() {
   const idValid = require('./middleware/id-validator')
 
   const entry = require('./routes/entry')
+  const screen = require('./routes/screen')
 
   app.use('/api/entries', express.Router()
     .get('/', entry.list)
@@ -42,6 +44,13 @@ async function start() {
     .post('/', entry.create)
     .put('/:id', idValid, entry.update)
     .delete('/:id', idValid, entry.remove))
+
+  app.use('/api/screen', express.Router()
+    .get('/', screen.list)
+    .get('/:id', idValid, screen.show)
+    .post('/', screen.create)
+    .put('/:id', idValid, screen.update)
+    .delete('/:id', idValid, screen.remove))
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
