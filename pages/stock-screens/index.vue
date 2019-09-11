@@ -1,15 +1,14 @@
 <template>
-  <article>
-    <h1>Stock Screens</h1>
-  </article>
+  <stock-screens />
 </template>
 
 <script>
+import StockScreens from '@/components/screens/StockScreens'
+
 export default {
-  name: 'StockScreensPage'
+  name: 'StockScreensPage',
+  components: {
+    StockScreens
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -11,9 +11,13 @@ const ScreenSchema = new Schema({
     type: String,
     required: true
   },
-  lastRefreshed: {
+  startDate: {
     type: String,
-    default: '',
+    required: true
+  },
+  investment: {
+    type: Number,
+    default: 0,
     required: false
   },
   stocks: {
