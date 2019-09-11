@@ -1,29 +1,33 @@
 <template>
-  <article>
+  <article v-if="!isLoading">
     <screen-dropform v-if="dropformScreen" :screen="dropformScreen" v-on:close="closeDropform" v-on:save="save" />
     <h2>Stock Screens</h2>
     <section class="mt-1">
-      <stock-screen v-for="screen in stockScreens" :key="screen.id" />
+      <stock-screen v-for="screen in stockScreens" :key="screen.id" :screen="screen" />
       <new-stock-screen v-on:create="create" />
     </section>
   </article>
 </template>
 
 <script>
+import StockScreen from './StockScreen'
 import NewStockScreen from './NewStockScreen'
 import ScreenDropform from './ScreenDropform'
+import { screens as screenService } from '@/services/api'
 
 export default {
   name: 'Stock Screens',
   data() {
     return {
       stockScreens: [],
-      dropformScreen: null
+      dropformScreen: null,
+      isLoading: true
     }
   },
   components: {
     NewStockScreen,
-    ScreenDropform
+    ScreenDropform,
+    StockScreen
   },
   methods: {
     initDropform(screen) {
@@ -42,9 +46,28 @@ export default {
 
       this.initDropform(emptyScreen)
     },
-    save(screen) {
-      console.log(screen)
+    async save(screen) {
+      const body = {
+        ...screen,
+        username: 'cuddyz'
+      }
+
+      if (screen.id) {
+        await screenService.update(screen.id, body)
+      } else {
+        await screenService.create(body)
+        this.stockScreens.push(body)
+      }
+
+      this.closeDropform()
+    },
+    async getData() {
+      this.stockScreens = (await screenService.list()).data
+      this.isLoading = false
     }
+  },
+  created() {
+    this.getData()
   }
 }
 </script>
@@ -53,5 +76,6 @@ export default {
   section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
   }
 </style>

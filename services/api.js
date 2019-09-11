@@ -34,3 +34,4 @@ function setPath (pathParam) {
 }
 
 export const entries = setPath('entries')
+export const screens = setPath('screens')

@@ -45,7 +45,7 @@ async function start() {
     .put('/:id', idValid, entry.update)
     .delete('/:id', idValid, entry.remove))
 
-  app.use('/api/screen', express.Router()
+  app.use('/api/screens', express.Router()
     .get('/', screen.list)
     .get('/:id', idValid, screen.show)
     .post('/', screen.create)
