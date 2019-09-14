@@ -31,6 +31,9 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios'
   ],
+  plugins: [
+    { src: '~/plugins/vuejs-datepicker', ssr: false }
+  ],
   /*
   ** Axios module configuration
   */
