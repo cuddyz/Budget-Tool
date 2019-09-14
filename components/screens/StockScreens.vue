@@ -3,7 +3,7 @@
     <screen-dropform v-if="dropformScreen" :screen="dropformScreen" v-on:close="closeDropform" v-on:save="save" />
     <h2>Stock Screens</h2>
     <section class="mt-1">
-      <stock-screen v-for="screen in stockScreens" :key="screen.id" :screen="screen" />
+      <stock-screen v-for="screen in stockScreens" :key="screen.id" :screen="screen" v-on:edit="initDropform" v-on:remove="remove" />
       <new-stock-screen v-on:create="create" />
     </section>
   </article>
@@ -60,6 +60,11 @@ export default {
       }
 
       this.closeDropform()
+    },
+    async remove(screen) {
+      await screenService.delete(screen.id)
+      const index = this.stockScreens.findIndex(s => screen.id === s.id)
+      this.stockScreens.splice(index, 1)
     },
     async getData() {
       this.stockScreens = (await screenService.list()).data

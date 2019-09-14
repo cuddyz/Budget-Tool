@@ -35,10 +35,4 @@
   background: darken(color(greyVLight), 5%);
   position: sticky;
   bottom: 0;
-
-  button {
-    &:hover {
-      background-color: darken(color(white), 5%);
-    }
-  }
 }

@@ -19,7 +19,7 @@
         </section>
         <section class="mb-2">
           <div class="flex">
-            <input v-model="newStock" :placeholder="placeholder" v-on:keyup.enter="add" />
+            <input v-model="newStock" placeholder="Enter stock symbol" v-on:keyup.enter="add" />
             <button @click="add"><i class="fas fa-plus p-25" /></button>
           </div>
           <div class="flex-flow mt-1">

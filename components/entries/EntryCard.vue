@@ -9,7 +9,7 @@
     <list v-if="entry.liabilities.length > 0" :data="entry.liabilities" name="Liabilities" />
     <footer class="flex">
       <button @click="$emit('delete', entry)" class="ml-a delete"><i class="fas fa-trash-alt" /></button>
-      <button @click="$emit('edit', entry)" class="ml-1 edit"><i class="fas fa-pencil-alt" /></button>
+      <button @click="$emit('edit', entry)" class="ml-50 edit"><i class="fas fa-pencil-alt" /></button>
     </footer>
   </section>
 </template>
@@ -32,16 +32,20 @@ export default {
   button {
     &.delete {
       color: color(red);
-
-      &:hover {
-        color: color(redDark);
-      }
     }
 
     &.edit {
       color: color(blue);
+    }
 
-      &:hover {
+    &:hover {
+      background-color: darken(color(white), 5%);
+
+      &.delete {
+        color: color(redDark);
+      }
+
+      &.edit {
         color: color(blueDark);
       }
     }

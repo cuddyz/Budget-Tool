@@ -31,3 +31,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  @import './assets/styles/colors';
+
+  button {
+    &.delete {
+      color: color(red);
+    }
+
+    &:hover {
+      background-color: darken(color(white), 5%);
+
+      &.delete {
+        color: color(redDark);
+      }
+    }
+  }
+</style>
