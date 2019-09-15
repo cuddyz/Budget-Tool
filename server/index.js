@@ -8,6 +8,7 @@ const mongoCreds = require('./mongoCreds')
 
 require('./models/entry')
 require('./models/screen')
+require('./models/stock')
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
@@ -37,6 +38,7 @@ async function start() {
 
   const entry = require('./routes/entry')
   const screen = require('./routes/screen')
+  const stock = require('./routes/stock')
 
   app.use('/api/entries', express.Router()
     .get('/', entry.list)
@@ -51,6 +53,11 @@ async function start() {
     .post('/', screen.create)
     .put('/:id', idValid, screen.update)
     .delete('/:id', idValid, screen.remove))
+
+  app.use('/api/stocks', express.Router()
+    .get('/:symbol', stock.show)
+    .put('/:symbol', screen.update)
+    .delete('/:symbol', screen.remove))
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
