@@ -7,7 +7,7 @@ const StockSchema = new Schema({
     type: String,
     required: true
   },
-  lastRefresh: {
+  lastRefreshDate: {
     type: String,
     required: true
   },
