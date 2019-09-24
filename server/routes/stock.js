@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Stock = mongoose.model('Stock')
+const stockCache = require('../lib/stockCache')
 
 async function show(req, res, next) {
   let instance = await Stock.findOne({ symbol: req.params.symbol }).exec()
@@ -8,6 +9,8 @@ async function show(req, res, next) {
     err.status = 404
     return next(err)
   }
+  // Make sure the cache is up to date
+  instance = await stockCache.cacheStock(instance)
   res.json(instance)
 }
 

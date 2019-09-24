@@ -9,7 +9,7 @@ const stockEndpoint = 'https://www.alphavantage.co/query?function=TIME_SERIES_WE
 
 async function cacheStock(stock) {
   const lastRefreshDate = moment(stock.lastRefreshDate).startOf('day')
-  const todayDate = moment().get('date').startOf('day')
+  const todayDate = moment().startOf('day')
 
   if (todayDate <= lastRefreshDate) {
     const cachedStock = await Stock.findOne({ symbol: stock.symbol }).exec()
@@ -19,28 +19,21 @@ async function cacheStock(stock) {
     return cachedStock
   }
 
-  const freshStock = (await axios.get(`${stockEndpoint}?symbol=${stock.symbol}&apikey=${apiKey}`)).data
+  const freshStock = (await axios.get(`${stockEndpoint}&symbol=${stock.symbol}&apikey=${apiKey}`)).data
 
   if (!freshStock) {
-    throw new Error({ code: 500, message: 'AlphAvantage didnt return' })
+    throw new Error({ code: 500, message: 'AlphaVantage didnt return' })
   }
 
   const timeSeries = buildTimeSeries(freshStock)
 
   const stockBody = {
     symbol: stock.symbol,
-    lastRefreshDate: moment(),
+    lastRefreshDate: moment().toDate(),
     timeSeries: timeSeries
   }
 
-  const instance = new Stock(stockBody)
-  try {
-    await instance.validate()
-  } catch (e) {
-    throw new Error({ code: 500, message: e.message })
-  }
-  await instance.save()
-  return instance
+  return Stock.findOneAndUpdate({ symbol: stock.symbol }, stockBody, { 'new': true }).exec()
 }
 
 function buildTimeSeries(stock) {
